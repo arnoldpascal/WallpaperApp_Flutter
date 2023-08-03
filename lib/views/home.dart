@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:wallpaper_app/data/data.dart';
+import 'package:wallpaper_app/model/wallpaper_model.dart';
 import 'package:wallpaper_app/widget/widget.dart';
 import '../model/categories_model.dart';
 import 'package:http/http.dart' as http;
@@ -15,6 +16,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<CategoriesModel> categories = [];
+  List<WallpaperModel> wallpapers = [];
 
   // API Function
   getTrendingWallpapers() async {
@@ -26,7 +28,9 @@ class _HomeState extends State<Home> {
 
     Map<String, dynamic> jsonData = jsonDecode(response.body);
     jsonData["photos"].forEach((element) {
-      print(element);
+      // print(element);
+      WallpaperModel wallpaperModel = new WallpaperModel();
+      wallpaperModel = jsonData[""];
     });
   }
 
@@ -134,5 +138,3 @@ class CategoriesTile extends StatelessWidget {
     );
   }
 }
-
-// 1:05:20
