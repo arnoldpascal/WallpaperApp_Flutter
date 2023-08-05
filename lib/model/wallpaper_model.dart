@@ -36,6 +36,3 @@ class SrcModel {
         small: jsonData["small"]);
   }
 }
-
-
-// 1:22:34
