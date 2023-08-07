@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:wallpaper_app/data/data.dart';
 import 'package:wallpaper_app/model/wallpaper_model.dart';
+import 'package:wallpaper_app/views/search.dart';
 import 'package:wallpaper_app/widget/widget.dart';
 import '../model/categories_model.dart';
 import 'package:http/http.dart' as http;
@@ -17,6 +18,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<CategoriesModel> categories = [];
   List<WallpaperModel> wallpapers = [];
+  TextEditingController searchController = new TextEditingController();
 
   // API Function
   getTrendingWallpapers() async {
@@ -71,12 +73,22 @@ class _HomeState extends State<Home> {
                 children: <Widget>[
                   Expanded(
                     child: TextField(
+                      controller: searchController,
                       decoration: InputDecoration(
                           hintText: "Search Wallpaper",
                           border: InputBorder.none),
                     ),
                   ),
-                  Icon(Icons.search)
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Search(
+                                      searchQuery: searchController.text,
+                                    )));
+                      },
+                      child: Container(child: Icon(Icons.search)))
                 ],
               ),
             ),
