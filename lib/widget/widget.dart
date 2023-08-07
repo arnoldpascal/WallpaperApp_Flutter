@@ -57,5 +57,3 @@ Widget wallpapersList({required List<WallpaperModel> wallpapers, context}) {
     ),
   );
 }
-
-// 1:36:08
