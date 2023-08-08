@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
-
 import '../model/wallpaper_model.dart';
 
 Widget brandName() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: <Widget>[
-      Text(
-        "Pixel",
-        style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
-      ),
-      Text("Wallpaper",
-          style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500))
-    ],
+  return RichText(
+    text: TextSpan(
+      style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+      children: const <TextSpan>[
+        TextSpan(
+            text: 'Pixel',
+            style:
+                TextStyle(color: Colors.black87, fontWeight: FontWeight.bold)),
+        TextSpan(
+            text: 'Wallpaper',
+            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500)),
+      ],
+    ),
   );
 }
+// style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
+// style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500)
 
 Widget credit() {
   return Row(
@@ -57,3 +61,5 @@ Widget wallpapersList({required List<WallpaperModel> wallpapers, context}) {
     ),
   );
 }
+
+// 1:50:41
