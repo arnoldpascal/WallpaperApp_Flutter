@@ -40,7 +40,7 @@ class _SearchState extends State<Search> {
       wallpapers.add(wallpaperModel);
     });
 
-    setState(() {});
+    // setState(() {});
   }
 
   @override
@@ -54,7 +54,8 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: brandName(),
+        centerTitle: true,
+        title: Container(padding: EdgeInsets.zero, child: brandName()),
         elevation: 0.0,
       ),
       body: SingleChildScrollView(
