@@ -165,6 +165,7 @@ class _ImageViewState extends State<ImageView> {
     final result =
         await ImageGallerySaver.saveImage(Uint8List.fromList(response.data));
     print(result);
+    Navigator.pop(context);
   }
 
   _askPermission() async {
@@ -175,6 +176,3 @@ class _ImageViewState extends State<ImageView> {
     }
   }
 }
-
-
-// 2:10:40
