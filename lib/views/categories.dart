@@ -63,7 +63,10 @@ class _CategorieState extends State<Categorie> {
               SizedBox(
                 height: 16,
               ),
-              wallpapersList(wallpapers: wallpapers, context: context)
+              wallpapersList(wallpapers: wallpapers, context: context),
+              SizedBox(
+                height: 14,
+              ),
             ],
           ),
         ),
