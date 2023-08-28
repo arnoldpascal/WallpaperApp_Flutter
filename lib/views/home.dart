@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:wallpaper_app/data/data.dart';
 import 'package:wallpaper_app/model/wallpaper_model.dart';
+import 'package:wallpaper_app/views/categories.dart';
+import 'package:wallpaper_app/views/image_view.dart';
 import 'package:wallpaper_app/views/search.dart';
 import 'package:wallpaper_app/widget/widget.dart';
 import '../model/categories_model.dart';
@@ -56,7 +58,8 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: brandName(),
+        centerTitle: true,
+        title: Container(child: brandName()),
         elevation: 0.0,
       ),
       body: SingleChildScrollView(
@@ -113,7 +116,17 @@ class _HomeState extends State<Home> {
                     );
                   }),
             ),
-            wallpapersList(wallpapers: wallpapers, context: context)
+            wallpapersList(wallpapers: wallpapers, context: context),
+            SizedBox(
+              height: 8,
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(50, 15, 50, 5),
+              child: poweredBy(),
+            ),
+            SizedBox(
+              height: 12,
+            ),
           ],
         )),
       ),
@@ -128,36 +141,45 @@ class CategoriesTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 8),
-      child: Stack(
-        children: <Widget>[
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.network(
-              imgUrl,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    Categorie(categorieName: title.toLowerCase())));
+      },
+      child: Container(
+        margin: EdgeInsets.only(right: 8),
+        child: Stack(
+          children: <Widget>[
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(
+                imgUrl,
+                height: 50,
+                width: 100,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Container(
               height: 50,
               width: 100,
-              fit: BoxFit.cover,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.black26,
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                title,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
-          Container(
-            height: 50,
-            width: 100,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.black26,
-            ),
-            alignment: Alignment.center,
-            child: Text(
-              title,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
